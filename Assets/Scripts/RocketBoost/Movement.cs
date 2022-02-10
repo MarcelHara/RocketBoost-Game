@@ -30,7 +30,9 @@ public class Movement : MonoBehaviour
 
     void ApplyRotation(float rotateThisFrame)
     {
-        transform.Rotate(Vector3.forward * rotateThisFrame * Time.deltaTime);
+        rigidb.freezeRotation = true;   // freezing rotation so we can manually rotate
+        transform.Rotate(Vector3.forward * rotateThisFrame * Time.deltaTime); 
+        rigidb.freezeRotation = false;   // unfreeze rotation so physics system can overtake
     }
 
     void Update()
