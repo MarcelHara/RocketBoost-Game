@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dropper
   - Hit
+  - Friendly
   layers:
   - Default
   - TransparentFX

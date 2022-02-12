@@ -852,6 +852,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaunchPad
       objectReference: {fileID: 0}
+    - target: {fileID: 5166550258080156825, guid: a5344474a56ffd04f95d886e1b8a50c3, type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     - target: {fileID: 5166550258080156829, guid: a5344474a56ffd04f95d886e1b8a50c3, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -952,6 +956,10 @@ PrefabInstance:
     - target: {fileID: 9062253444928470605, guid: 32dffda61fe848042a3d02e3338fbe6a, type: 3}
       propertyPath: m_Name
       value: LandingPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062253444928470605, guid: 32dffda61fe848042a3d02e3338fbe6a, type: 3}
+      propertyPath: m_TagString
+      value: Finish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32dffda61fe848042a3d02e3338fbe6a, type: 3}
