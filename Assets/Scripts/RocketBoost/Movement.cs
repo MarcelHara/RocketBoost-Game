@@ -5,6 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rigidb;
+
+    AudioSource audioSource;
+
+
     [SerializeField] float thrust = 25f;
     [SerializeField] float rotationThrust = 25f;
 
@@ -13,6 +17,14 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))      // do keycode so you can makesure you spell the right action.
         {
             rigidb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
+            if(!audioSource.isPlaying)   // ! means false so if we are not playing then play audio
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 
@@ -44,5 +56,6 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rigidb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 }
