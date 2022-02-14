@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    /// <summary>
+    /// using switch statements instead of just doing if else if else constantly
+    /// </summary>
+    /// <param name="other"></param>
     void OnCollisionEnter(Collision other)
     {
         switch(other.gameObject.tag)
@@ -16,8 +21,13 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Hit Fuel");
                 break;
             default:
-                Debug.Log("Hit object you blew up");
+                sceneReload();
                 break;
         }
+    }
+
+    void sceneReload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Udemy RocketBoost.unity
+    guid: 0dca47d337aedee449f66a928fa8698c
   m_configObjects: {}
