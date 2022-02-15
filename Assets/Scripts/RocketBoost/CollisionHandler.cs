@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-
     public float waitTimer = 1f;
+    
     /// <summary>
     /// using switch statements instead of just doing if else if else constantly
     /// </summary>

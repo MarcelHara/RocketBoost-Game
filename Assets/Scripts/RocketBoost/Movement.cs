@@ -5,10 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rigidb;
-
     AudioSource audioSource;
-
-
     [SerializeField] float thrust = 25f;
     [SerializeField] float rotationThrust = 25f;
     [SerializeField] AudioClip mainEngine;
