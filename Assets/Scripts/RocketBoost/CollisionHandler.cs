@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+
+    public float waitTimer = 1f;
     /// <summary>
     /// using switch statements instead of just doing if else if else constantly
     /// </summary>
@@ -15,7 +17,7 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Hit Friendly");
                 break;
             case "Finish":
-                finishGame();
+                nextSceneDelay();
                 break;
             case "Fuel":
                 Debug.Log("Hit Fuel");
@@ -31,7 +33,7 @@ public class CollisionHandler : MonoBehaviour
     void startCrash()
     {
         GetComponent<Movement>().enabled = false;
-        Invoke("sceneReload", 1);
+        Invoke("sceneReload", waitTimer);
     }
     void sceneReload()
     {
@@ -47,5 +49,13 @@ public class CollisionHandler : MonoBehaviour
             nextsceneIndex = 0;
         }
         SceneManager.LoadScene(nextsceneIndex);   // loads the scene we have selected which is 0
+    }
+/// <summary>
+/// added scene delay 
+/// </summary>
+    void nextSceneDelay()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("finishGame", waitTimer);
     }
 }
