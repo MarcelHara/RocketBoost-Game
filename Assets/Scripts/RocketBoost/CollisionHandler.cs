@@ -33,6 +33,12 @@ public class CollisionHandler : MonoBehaviour
 
     void finishGame()
     {
+        int nextsceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(nextsceneIndex == SceneManager.sceneCountInBuildSettings)  // if the scene is the same as in index then set index to 0
+        {
+            nextsceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextsceneIndex);   // loads the scene we have selected which is 0
     }
 }
