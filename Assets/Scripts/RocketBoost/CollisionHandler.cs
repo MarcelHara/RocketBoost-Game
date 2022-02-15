@@ -15,7 +15,7 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Hit Friendly");
                 break;
             case "Finish":
-                Debug.Log("Finished Game");
+                finishGame();
                 break;
             case "Fuel":
                 Debug.Log("Hit Fuel");
@@ -29,5 +29,10 @@ public class CollisionHandler : MonoBehaviour
     void sceneReload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void finishGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
