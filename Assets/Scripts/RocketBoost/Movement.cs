@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float thrust = 25f;
     [SerializeField] float rotationThrust = 25f;
+    [SerializeField] AudioClip mainEngine;
 
     void thrustMechanic()
     {
@@ -19,7 +20,7 @@ public class Movement : MonoBehaviour
             rigidb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
             if(!audioSource.isPlaying)   // ! means false so if we are not playing then play audio
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(mainEngine, 0.5f);
             }
         }
         else
