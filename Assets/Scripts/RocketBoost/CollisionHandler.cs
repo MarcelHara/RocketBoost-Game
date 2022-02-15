@@ -21,11 +21,18 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Hit Fuel");
                 break;
             default:
-                sceneReload();
+                startCrash();
                 break;
         }
     }
 
+
+
+    void startCrash()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("sceneReload", 1);
+    }
     void sceneReload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
