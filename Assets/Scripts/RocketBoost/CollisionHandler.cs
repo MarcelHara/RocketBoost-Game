@@ -29,7 +29,6 @@ public class CollisionHandler : MonoBehaviour
 
     void finishGame()
     {
-        audioSource.PlayOneShot(audioVictory, 0.5f);
         int nextsceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if(nextsceneIndex == SceneManager.sceneCountInBuildSettings)  // if the scene is the same as in index then set index to 0
@@ -43,6 +42,7 @@ public class CollisionHandler : MonoBehaviour
 /// </summary>
     void nextSceneDelay()
     {
+        audioSource.PlayOneShot(audioVictory, 1f);
         GetComponent<Movement>().enabled = false;
         Invoke("finishGame", waitTimer);
     }

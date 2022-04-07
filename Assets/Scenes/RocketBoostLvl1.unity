@@ -888,10 +888,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 892580264538737158, guid: 71f4e0a2aea369a45b4396815fa15431, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4829296367844206385, guid: 71f4e0a2aea369a45b4396815fa15431, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -940,10 +936,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 8196521372286197223, guid: 71f4e0a2aea369a45b4396815fa15431, type: 3}
-      propertyPath: audioCrash
-      value: 
-      objectReference: {fileID: 8300000, guid: 16bc7caf1c1216749bb30cf3d57563fd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71f4e0a2aea369a45b4396815fa15431, type: 3}
 --- !u!1001 &5166550259056613290
