@@ -8,6 +8,7 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip audioCrash;
     [SerializeField] AudioClip audioVictory;
+    bool isPlaying = false;
    
     //runtime
     private void Awake()
@@ -18,8 +19,9 @@ public class CollisionHandler : MonoBehaviour
     // methods
     void startCrash()
     {
-        GetComponent<Movement>().enabled = false;
+        isPlaying = true;
         audioSource.PlayOneShot(audioCrash, 0.5f);
+        GetComponent<Movement>().enabled = false;
         Invoke("sceneReload", waitTimer);
     }
     void sceneReload()
@@ -42,6 +44,7 @@ public class CollisionHandler : MonoBehaviour
 /// </summary>
     void nextSceneDelay()
     {
+        isPlaying = true;
         audioSource.PlayOneShot(audioVictory, 1f);
         GetComponent<Movement>().enabled = false;
         Invoke("finishGame", waitTimer);
@@ -55,6 +58,9 @@ public class CollisionHandler : MonoBehaviour
     /// <param name="other"></param>
     void OnCollisionEnter(Collision other)
     {
+
+        if (isPlaying) { return; }
+        
         switch (other.gameObject.tag)
         {
             case "Friendly":
@@ -70,5 +76,5 @@ public class CollisionHandler : MonoBehaviour
                 startCrash();
                 break;
         }
-    }
+    }   
 }
