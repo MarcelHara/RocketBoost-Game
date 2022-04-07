@@ -3,36 +3,23 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    //refs,vars
     public float waitTimer = 1f;
-    
-    /// <summary>
-    /// using switch statements instead of just doing if else if else constantly
-    /// </summary>
-    /// <param name="other"></param>
-    void OnCollisionEnter(Collision other)
+    AudioSource audioSource;
+    [SerializeField] AudioClip audioCrash;
+    [SerializeField] AudioClip audioVictory;
+   
+    //runtime
+    private void Awake()
     {
-        switch(other.gameObject.tag)
-        {
-            case "Friendly":
-                Debug.Log("Hit Friendly");
-                break;
-            case "Finish":
-                nextSceneDelay();
-                break;
-            case "Fuel":
-                Debug.Log("Hit Fuel");
-                break;
-            default:
-                startCrash();
-                break;
-        }
+        audioSource = GetComponent<AudioSource>();
     }
 
-
-
+    // methods
     void startCrash()
     {
         GetComponent<Movement>().enabled = false;
+        audioSource.PlayOneShot(audioCrash, 0.5f);
         Invoke("sceneReload", waitTimer);
     }
     void sceneReload()
@@ -42,6 +29,7 @@ public class CollisionHandler : MonoBehaviour
 
     void finishGame()
     {
+        audioSource.PlayOneShot(audioVictory, 0.5f);
         int nextsceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if(nextsceneIndex == SceneManager.sceneCountInBuildSettings)  // if the scene is the same as in index then set index to 0
@@ -57,5 +45,30 @@ public class CollisionHandler : MonoBehaviour
     {
         GetComponent<Movement>().enabled = false;
         Invoke("finishGame", waitTimer);
+    }
+
+    //Collision handler
+
+    /// <summary>
+    /// using switch statements instead of just doing if else if else constantly
+    /// </summary>
+    /// <param name="other"></param>
+    void OnCollisionEnter(Collision other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Friendly":
+                Debug.Log("Hit Friendly not implement");
+                break;
+            case "Finish":
+                nextSceneDelay();
+                break;
+            case "Fuel":
+                Debug.Log("Fuel hit not implemented");
+                break;
+            default:
+                startCrash();
+                break;
+        }
     }
 }
