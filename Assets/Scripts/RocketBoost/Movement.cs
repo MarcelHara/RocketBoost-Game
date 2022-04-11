@@ -17,20 +17,30 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))      // do keycode so you can makesure you spell the right action.
         {
-            rigidb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
-            if (!audioSource.isPlaying)   // ! means false so if we are not playing then play audio
-            {
-                audioSource.PlayOneShot(mainEngine, 0.5f);
-            }
-            if(!thrusterParticles.isPlaying)
-            {
-                thrusterParticles.Play();
-            }
+            thrusting();
         }
         else
         {
-            thrusterParticles.Stop();
-            audioSource.Stop();
+            thrustStop();
+        }
+    }
+
+    void thrustStop()
+    {
+        thrusterParticles.Stop();
+        audioSource.Stop();
+    }
+
+    void thrusting()
+    {
+        rigidb.AddRelativeForce(Vector3.up * thrust * Time.deltaTime);
+        if (!audioSource.isPlaying)   // ! means false so if we are not playing then play audio
+        {
+            audioSource.PlayOneShot(mainEngine, 0.5f);
+        }
+        if (!thrusterParticles.isPlaying)
+        {
+            thrusterParticles.Play();
         }
     }
 
