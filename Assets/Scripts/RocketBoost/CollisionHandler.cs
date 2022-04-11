@@ -8,12 +8,14 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip audioCrash;
     [SerializeField] AudioClip audioVictory;
+    [SerializeField] ParticleSystem crashParticles;
     bool isPlaying = false;
-   
     //runtime
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        crashParticles = crashParticles.GetComponent<ParticleSystem>();
+        crashParticles.Stop();
     }
 
     // methods
@@ -21,6 +23,7 @@ public class CollisionHandler : MonoBehaviour
     {
         isPlaying = true;
         audioSource.PlayOneShot(audioCrash, 0.5f);
+        crashParticles.Play();
         GetComponent<Movement>().enabled = false;
         Invoke("sceneReload", waitTimer);
     }
@@ -59,9 +62,9 @@ public class CollisionHandler : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
 
-        if (isPlaying) { return; }
+        if (isPlaying) { return; } //if isplaying is true just return. instead of writing another else statement.
         
-        switch (other.gameObject.tag)
+        switch (other.gameObject.tag) // this acts as the else.
         {
             case "Friendly":
                 Debug.Log("Hit Friendly not implement");
