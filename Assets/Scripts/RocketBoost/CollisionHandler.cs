@@ -10,6 +10,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip audioVictory;
     [SerializeField] ParticleSystem crashParticles;
     bool isPlaying = false;
+    bool collisionEnabler = false;
     //runtime
     private void Awake()
     {
@@ -18,10 +19,29 @@ public class CollisionHandler : MonoBehaviour
         crashParticles.Stop();
     }
 
+    private void Update()
+    {
+        DebugKeys();
+    }
+
     // methods
+    void DebugKeys()
+    {
+        if(Input.GetKey(KeyCode.L))
+        {
+            Debug.Log("Next scene activated");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else if(Input.GetKey(KeyCode.C))
+        {
+            Debug.Log("Collision was disabled");
+            collisionEnabler = !collisionEnabler;
+        }
+    }
     void startCrash()
     {
         isPlaying = true;
+        collisionEnabler = true;
         audioSource.PlayOneShot(audioCrash, 0.5f);
         crashParticles.Play();
         GetComponent<Movement>().enabled = false;
@@ -62,7 +82,7 @@ public class CollisionHandler : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
 
-        if (isPlaying) { return; } //if isplaying is true just return. instead of writing another else statement.
+        if (isPlaying || collisionEnabler) { return; } //if isplaying is true just return. instead of writing another else statement.
         
         switch (other.gameObject.tag) // this acts as the else.
         {
