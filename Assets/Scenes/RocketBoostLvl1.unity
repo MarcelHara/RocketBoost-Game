@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingBlock: {x: 0, y: 5, z: 0}
   movingFactor: -0.5
-  period: 2
+  period: 3
 --- !u!1 &1586764354
 GameObject:
   m_ObjectHideFlags: 0
